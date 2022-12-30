@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.wmccd.music_datasource'
+    compileSdk rootProject.ext.compile_sdk
+
+    defaultConfig {
+        minSdk rootProject.ext.min_sdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_version"
+}

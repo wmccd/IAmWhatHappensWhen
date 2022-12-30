@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "I Am What Happens When"
+include ':app'
+include ':music-ui'
+include ':music-presentation'
+include ':music-repository'
+include ':music-datasource'
+include ':music-domain'
