@@ -14,6 +14,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':music-repository')
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_version"
