@@ -5,8 +5,6 @@ import com.wmccd.music_domain.add_album.use_case.AddAlbumUseCase
 import com.wmccd.music_domain.clean_architecture.coroutine.CoroutineContextProvider
 import com.wmccd.music_domain.common.model.AlbumDomainModel
 import com.wmccd.music_domain.coroutine.FakeCoroutineContextProvider
-import com.wmccd.music_domain.update_album.repository.UpdateAlbumDummyRepository
-import com.wmccd.music_domain.update_album.use_case.UpdateAlbumUseCase
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
