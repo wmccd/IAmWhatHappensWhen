@@ -193,40 +193,28 @@ internal class TestDomainException(message: String ): DomainException(Throwable(
 internal class AlbumDetailsRepositoryThrowsException: AlbumDetailsRepository {
     override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw TestDomainException( UseCaseExecutorTest.THROWN_EXCEPTION_MESSAGE)
-        return AlbumDetailsDomainModel(
-             album = AlbumDomainModel(
-                id = "1",
-                title = "Keep on Bobbin'",
-                artist = "The Mighty Bobbins",
-                discs = 2,
-                tracks = 19,
-                year = 1999,
-                imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
-            )
-        )
+        return AlbumDetailsDomainModelGenerator().generate()
+
     }
 }
 
 internal class AlbumDetailsRepositoryThrowsCancellationException: AlbumDetailsRepository {
     override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw CancellationException(UseCaseExecutorTest.THROWN_CANCELLATION_EXCEPTION_MESSAGE)
-        return AlbumDetailsDomainModel(
-            album = AlbumDomainModel(
-                id = "1",
-                title = "Keep on Bobbin'",
-                artist = "The Mighty Bobbins",
-                discs = 2,
-                tracks = 19,
-                year = 1999,
-                imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
-            )
-        )
+        return AlbumDetailsDomainModelGenerator().generate()
+
     }
 }
 
 internal class AlbumDetailsRepositoryThrowsUnknownDomainException: AlbumDetailsRepository {
     override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw Exception(UseCaseExecutorTest.UNKNOWN_DOMAIN_EXCEPTION_MESSAGE)
+        return AlbumDetailsDomainModelGenerator().generate()
+    }
+}
+
+internal class AlbumDetailsDomainModelGenerator(){
+    fun generate(): AlbumDetailsDomainModel{
         return AlbumDetailsDomainModel(
             album = AlbumDomainModel(
                 id = "1",
