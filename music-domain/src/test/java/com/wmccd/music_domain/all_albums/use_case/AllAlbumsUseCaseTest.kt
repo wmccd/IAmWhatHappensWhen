@@ -7,18 +7,18 @@ import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-internal class GetAllAlbumsUseCaseTest {
+internal class AllAlbumsUseCaseTest {
 
     private lateinit var allAlbumsUseCase: AllAlbumsUseCase
     private lateinit var coroutineContextProvider: CoroutineContextProvider
-    private var allAlbumsDummyRepository = AllAlbumsDummyRepository()
+    private var dummyRepository = AllAlbumsDummyRepository()
 
     @Before
     fun setUp() {
         coroutineContextProvider = FakeCoroutineContextProvider()
 
         allAlbumsUseCase = AllAlbumsUseCase(
-            allAlbumsDummyRepository,
+            dummyRepository,
             coroutineContextProvider
         )
     }

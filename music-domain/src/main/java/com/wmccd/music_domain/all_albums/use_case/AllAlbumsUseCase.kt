@@ -1,7 +1,5 @@
 package com.wmccd.music_domain.all_albums.use_case
 
-import com.wmccd.music_domain.album_details.model.AlbumDomainModel
-import com.wmccd.music_domain.album_details.repository.AlbumDetailsRepository
 import com.wmccd.music_domain.all_albums.model.AllAlbumsDomainModel
 import com.wmccd.music_domain.all_albums.repository.AllAlbumsRepository
 import com.wmccd.music_domain.clean_architecture.coroutine.CoroutineContextProvider

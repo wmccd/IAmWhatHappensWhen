@@ -1,6 +1,6 @@
 package com.wmccd.music_domain.all_albums.repository
 
-import com.wmccd.music_domain.album_details.model.AlbumDomainModel
+import com.wmccd.music_domain.common.model.AlbumDomainModel
 import com.wmccd.music_domain.all_albums.model.AllAlbumsDomainModel
 
 class AllAlbumsDummyRepository: AllAlbumsRepository {

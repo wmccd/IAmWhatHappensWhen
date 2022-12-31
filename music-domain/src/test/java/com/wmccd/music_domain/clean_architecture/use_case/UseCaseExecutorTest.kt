@@ -1,6 +1,7 @@
 package com.wmccd.music_domain.clean_architecture.use_case
 
-import com.wmccd.music_domain.album_details.model.AlbumDomainModel
+import com.wmccd.music_domain.album_details.model.AlbumDetailsDomainModel
+import com.wmccd.music_domain.common.model.AlbumDomainModel
 import com.wmccd.music_domain.album_details.repository.AlbumDetailsDummyRepository
 import com.wmccd.music_domain.album_details.repository.AlbumDetailsRepository
 import com.wmccd.music_domain.album_details.use_case.AlbumDetailsUseCase
@@ -49,8 +50,8 @@ class UseCaseExecutorTest {
         val countDownLatch = CountDownLatch(1)
         val expectedCountDown = 0L
 
-        fun onResult( albumDomainModel: AlbumDomainModel ){
-            assertEquals(expectedAlbumDomainModel, albumDomainModel)
+        fun onResult(albumDetailsDomainModel: AlbumDetailsDomainModel){
+            assertEquals(expectedAlbumDomainModel, albumDetailsDomainModel)
             countDownLatch.countDown()
         }
 
@@ -85,7 +86,7 @@ class UseCaseExecutorTest {
         val countDownLatch = CountDownLatch(1)
         val expectedCountDown = 0L
 
-        fun onResult( albumDomainModel: AlbumDomainModel ){
+        fun onResult(albumDetailsDomainModel: AlbumDetailsDomainModel){
             fail("Unexpectedly in onResult")
         }
 
@@ -123,7 +124,7 @@ class UseCaseExecutorTest {
         val countDownLatch = CountDownLatch(1)
         val expectedCountDown = 1L
 
-        fun onResult( albumDomainModel: AlbumDomainModel ){
+        fun onResult(albumDetailsDomainModel: AlbumDetailsDomainModel){
             fail("Unexpectedly in onResult")
         }
 
@@ -159,7 +160,7 @@ class UseCaseExecutorTest {
         val countDownLatch = CountDownLatch(1)
         val expectedCountDown = 0L
 
-        fun onResult( albumDomainModel: AlbumDomainModel ){
+        fun onResult(albumDetailsDomainModel: AlbumDetailsDomainModel){
             fail("Unexpectedly in onResult")
         }
 
@@ -190,46 +191,52 @@ class UseCaseExecutorTest {
 
 internal class TestDomainException(message: String ): DomainException(Throwable(message)){}
 internal class AlbumDetailsRepositoryThrowsException: AlbumDetailsRepository {
-    override fun albumDetails(albumId: String): AlbumDomainModel {
+    override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw TestDomainException( UseCaseExecutorTest.THROWN_EXCEPTION_MESSAGE)
-        return AlbumDomainModel(
-            id = "1",
-            title = "Keep on Bobbin'",
-            artist = "The Mighty Bobbins",
-            discs = 2,
-            tracks = 19,
-            year = 1999,
-            imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+        return AlbumDetailsDomainModel(
+             album = AlbumDomainModel(
+                id = "1",
+                title = "Keep on Bobbin'",
+                artist = "The Mighty Bobbins",
+                discs = 2,
+                tracks = 19,
+                year = 1999,
+                imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+            )
         )
     }
 }
 
 internal class AlbumDetailsRepositoryThrowsCancellationException: AlbumDetailsRepository {
-    override fun albumDetails(albumId: String): AlbumDomainModel {
+    override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw CancellationException(UseCaseExecutorTest.THROWN_CANCELLATION_EXCEPTION_MESSAGE)
-        return AlbumDomainModel(
-            id = "1",
-            title = "Keep on Bobbin'",
-            artist = "The Mighty Bobbins",
-            discs = 2,
-            tracks = 19,
-            year = 1999,
-            imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+        return AlbumDetailsDomainModel(
+            album = AlbumDomainModel(
+                id = "1",
+                title = "Keep on Bobbin'",
+                artist = "The Mighty Bobbins",
+                discs = 2,
+                tracks = 19,
+                year = 1999,
+                imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+            )
         )
     }
 }
 
 internal class AlbumDetailsRepositoryThrowsUnknownDomainException: AlbumDetailsRepository {
-    override fun albumDetails(albumId: String): AlbumDomainModel {
+    override fun albumDetails(albumId: String): AlbumDetailsDomainModel {
         throw Exception(UseCaseExecutorTest.UNKNOWN_DOMAIN_EXCEPTION_MESSAGE)
-        return AlbumDomainModel(
-            id = "1",
-            title = "Keep on Bobbin'",
-            artist = "The Mighty Bobbins",
-            discs = 2,
-            tracks = 19,
-            year = 1999,
-            imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+        return AlbumDetailsDomainModel(
+            album = AlbumDomainModel(
+                id = "1",
+                title = "Keep on Bobbin'",
+                artist = "The Mighty Bobbins",
+                discs = 2,
+                tracks = 19,
+                year = 1999,
+                imageUrl = "https://en.wikipedia.org/wiki/Bobbin#/media/File:Hua_Nan_sewing_machine_-_06.jpg"
+            )
         )
     }
 }

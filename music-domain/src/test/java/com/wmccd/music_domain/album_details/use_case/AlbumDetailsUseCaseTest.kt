@@ -7,11 +7,11 @@ import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-internal class GetAlbumDetailsUseCaseTest {
+internal class AlbumDetailsUseCaseTest {
 
     private lateinit var albumDetailsUseCase: AlbumDetailsUseCase
     private lateinit var coroutineContextProvider: CoroutineContextProvider
-    private var albumDetailsRepository = AlbumDetailsDummyRepository()
+    private var dummyRepository = AlbumDetailsDummyRepository()
 
 
     @Before
@@ -19,7 +19,7 @@ internal class GetAlbumDetailsUseCaseTest {
         coroutineContextProvider = FakeCoroutineContextProvider()
 
         albumDetailsUseCase = AlbumDetailsUseCase(
-            albumDetailsRepository,
+            dummyRepository,
             coroutineContextProvider
         )
     }

@@ -19,4 +19,5 @@ abstract class BackgroundExecutingUseCase<REQUEST, RESULT>(
     abstract fun executeInBackground(
         request: REQUEST
     ): RESULT
+
 }
